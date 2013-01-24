@@ -1,0 +1,20 @@
+{
+    "name": "irmserv/irmnet-auth",
+    "description": "Module of basic authentication using Microsoft Windows Server AD feature for Zend Framework 2.", 
+    "keywords": [
+    "framework",
+    "zf2",
+    "auth",
+    "ldap"
+    ],
+    
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload":{
+        "psr-0":{
+            "Auth":"src"
+        },
+        "classmap": ["Module.php"]
+    }
+}
