@@ -28,10 +28,12 @@ class IndexController extends AbstractActionController {
 
     public function indexAction() {
         $form = new LoginInit;
+        
         $ldapconfig = $this->getServiceLocator()->get('Config');
+        
         $view = array();
+        
         $view['form'] = $form;
-
 
         $ldap = $this->getServiceLocator()->get('Ldap');
 
@@ -39,21 +41,21 @@ class IndexController extends AbstractActionController {
         $options = (array) $config->toArray();
 
         if ($this->getRequest()->isPost()) {
+            
             $login = $this->getRequest()->getPost('login');
             $senha = $this->getRequest()->getPost('senha');
-
-
+            
             $auth = new AuthenticationService();
+            
             unset($options['log_path']);
 
-
-            $adapter = new AuthAdapter((array) $options,
-                            $login,
-                            $senha);
+            $adapter = new AuthAdapter((array) $options, $login, $senha);
 
             $result = $auth->authenticate($adapter);
             $messages = $result->getMessages();
+            
             $errors = array();
+            
             if (end(explode(' ', $messages[3])) === 'successful') {
                 $result = $ldap->search("(samaccountname={$login})", $config->server->baseDn, \Zend\Ldap\Ldap::SEARCH_SCOPE_SUB);
                 $userdata = array();
@@ -63,7 +65,7 @@ class IndexController extends AbstractActionController {
                     $userdata['memberof'] = $filter->filter($item['memberof']);
                     $auth->getStorage()->write($userdata);
                 }
-                return $this->redirect()->toRoute('chamado');
+                return $this->redirect()->toRoute('home');
             } else {
                 $view['messages'] = reset(explode(':', $messages[3]));
             }
