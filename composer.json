@@ -1,5 +1,5 @@
 {
-    "name": "irmserv/irmnet-auth",
+    "name": "irmnet/auth",
     "description": "Module of basic authentication using Microsoft Windows Server AD feature for Zend Framework 2.", 
     "keywords": [
     "framework",
