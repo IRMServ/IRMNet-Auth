@@ -15,7 +15,7 @@ class Permission extends AbstractPlugin {
         $action = $e->getRouteMatch()->getParam('action');
         $auth = new AuthenticationService;
         
-        if (!$auth->hasIdentity() && $controller != 'Auth\Controller\Index' && $action != 'index' ) {
+        if (!$auth->hasIdentity() && $route != 'login' ) {
             $router = $e->getRouter();
             $url = $router->assemble(array(), array('name' => 'login'));
             $response = $e->getResponse();
