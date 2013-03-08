@@ -8,10 +8,6 @@ use Auth\Form\LoginInit;
 use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Adapter\Ldap as AuthAdapter;
 use Zend\Config\Config;
-use Zend\Log\Logger;
-use Zend\Log\Writer\Stream as LogWriter;
-use Zend\Log\Filter\Priority as LogFilter;
-
 class IndexController extends AbstractActionController {
 
     /**
@@ -45,7 +41,7 @@ class IndexController extends AbstractActionController {
             $login = $this->getRequest()->getPost('login');
             $senha = $this->getRequest()->getPost('senha');
             
-            $auth = new AuthenticationService();
+            $auth = $this->getServiceLocator()->get('Auth');
             
             unset($options['log_path']);
 

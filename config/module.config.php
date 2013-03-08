@@ -41,6 +41,9 @@ return array(
             },
             'Navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
         ),
+        'services' => array(
+            'Auth' => new \Zend\Authentication\AuthenticationService()
+        )
     ),
     'ldap-config' => include __DIR__ . '/ldap.config.php',
     'view_manager' => array(
@@ -86,7 +89,6 @@ return array(
             'auth' => array(
                 'label' => 'Logout',
                 'route' => 'logout',
-                
             ),
         ),
     ),
