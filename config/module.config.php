@@ -87,7 +87,7 @@ return array(
         'default' => array(
             // And finally, here is where we define our page hierarchy
             'auth' => array(
-                'label' => 'Logout',
+                'label' => 'Sair',
                 'route' => 'logout',
             ),
         ),

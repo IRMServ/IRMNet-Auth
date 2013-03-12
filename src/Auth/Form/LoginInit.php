@@ -29,7 +29,7 @@ class LoginInit extends Form {
                 'type'  => 'text',
             ),
             'options' => array(
-                'label' => 'User : ',
+                'label' => 'Usuário : ',
             ),
         ));
     }
@@ -40,7 +40,7 @@ class LoginInit extends Form {
                 'type'  => 'password',
             ),
             'options' => array(
-                'label' => 'Password : ',
+                'label' => 'Senha : ',
             ),
         ));
     }
