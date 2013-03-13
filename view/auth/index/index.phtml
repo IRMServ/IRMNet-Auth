@@ -1,6 +1,6 @@
 <div class="page-header">
     <h1>IRM Net</h1>
-    
+
     <h2>Autenticação</h2>
     <h4>Use seu usuário/senha da rede</h4>
 
@@ -9,11 +9,13 @@
 
     <?php
     if ($this->messages) {
-        echo '<ul>';
-
-        echo '<li>' . $this->messages . '</li>';
-
-        echo '</ul>';
+        ?>
+        <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Erro</strong><?php echo $this->messages;?>
+        </div>
+       
+        <?php
     }
     $form = $this->form;
     $form->setAttribute('action', $this->url('login', array()));
