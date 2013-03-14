@@ -8,6 +8,7 @@ use Auth\Form\LoginInit;
 use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Adapter\Ldap as AuthAdapter;
 use Zend\Config\Config;
+
 class IndexController extends AbstractActionController {
 
     /**
@@ -24,11 +25,11 @@ class IndexController extends AbstractActionController {
 
     public function indexAction() {
         $form = new LoginInit;
-        
+
         $ldapconfig = $this->getServiceLocator()->get('Config');
-        
+
         $view = array();
-        
+
         $view['form'] = $form;
 
         $ldap = $this->getServiceLocator()->get('Ldap');
@@ -37,30 +38,30 @@ class IndexController extends AbstractActionController {
         $options = (array) $config->toArray();
 
         if ($this->getRequest()->isPost()) {
-            
+
             $login = $this->getRequest()->getPost('login');
             $senha = $this->getRequest()->getPost('senha');
-            
+
             $auth = $this->getServiceLocator()->get('Auth');
-            
+
             unset($options['log_path']);
 
             $adapter = new AuthAdapter((array) $options, $login, $senha);
 
             $result = $auth->authenticate($adapter);
             $messages = $result->getMessages();
-            
+
             $errors = array();
-            
+
             if (end(explode(' ', $messages[3])) === 'successful') {
                 $result = $ldap->search("(samaccountname={$login})", $config->server->baseDn, \Zend\Ldap\Ldap::SEARCH_SCOPE_SUB);
                 $userdata = array();
                 foreach ($result as $item) {
-                    $userdata['displayname'] = $item['displayname'];
-                    $filter = $this->FilterMemberOf();
-                    $userdata['memberof'] = $filter->filter($item['memberof']);
-                    $auth->getStorage()->write($userdata);
+                    $userdata['displayname'] = $item['displayname'][0];
+                    $userdata['email'] = $item['mail'][0];
+                    $userdata['departamento'] = $item['department'][0];
                 }
+                 $auth->getStorage()->write($userdata);
                 return $this->redirect()->toRoute('home');
             } else {
                 $view['messages'] = reset(explode(':', $messages[3]));
