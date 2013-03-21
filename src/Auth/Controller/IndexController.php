@@ -59,10 +59,10 @@ class IndexController extends AbstractActionController {
                 foreach ($result as $item) {
                     $userdata['displayname'] = $item['displayname'][0];
                     $userdata['email'] = $item['mail'][0];
-                    $userdata['departamento'] = $item['department'][0];
+                    $userdata['gerente'] = isset($item['manager'][0]) ? $item['manager'][0] : true;
                 }
                  $auth->getStorage()->write($userdata);
-                return $this->redirect()->toRoute('home');
+                return $this->redirect()->toRoute(strtolower(str_replace(" ","-",$userdata['departamento'])));
             } else {
                 $view['messages'] = reset(explode(':', $messages[3]));
             }
