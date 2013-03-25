@@ -63,7 +63,7 @@ class IndexController extends AbstractActionController {
                     $userdata['gerente'] = isset($item['manager'][0]) ? $item['manager'][0] : true;
                 }
                  $auth->getStorage()->write($userdata);
-                return $this->redirect()->toRoute(strtolower(str_replace(" ","-",$userdata['departamento'])));
+                return $this->redirect()->toRoute('home');
             } else {
                 $view['messages'] = reset(explode(':', $messages[3]));
             }
