@@ -41,6 +41,25 @@ return array(
             },
             'Navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
         ),
+        'UsersPair' => function($sm) {
+            $ldap = $sm->get('Ldap');
+            $config = include 'ldap.config.php';
+            $f2 = \Zend\Ldap\Filter::equals('objectCategory', 'person');
+            $f3 = \Zend\Ldap\Filter::equals('objectClass', 'user');
+            $f5 = \Zend\Ldap\Filter::equals('useraccountcontrol', '66048');
+            $f4 = \Zend\Ldap\Filter::andFilter($f2, $f3, $f5);
+
+            $result = $ldap->search($f4, $config['server']['baseDn'], \Zend\Ldap\Ldap::SEARCH_SCOPE_SUB);
+
+            $users = array();
+            $noArray = array('Germano', 'Funcionário', 'teste', 'WKRADAR', 'Recepcao', 'Dswk');
+            foreach ($result as $item) {
+                if (!in_array($item['displayname'][0], $noArray)) {
+                    $users[$item['displayname'][0]] = $item['displayname'][0];
+                }
+            }
+            return $users;
+        },
         'services' => array(
             'Auth' => new \Zend\Authentication\AuthenticationService()
         )
