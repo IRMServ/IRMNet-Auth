@@ -60,7 +60,9 @@ class IndexController extends AbstractActionController {
                     $userdata['displayname'] = $item['displayname'][0];
                     $userdata['email'] = $item['mail'][0];
                      $userdata['departamento'] = $item['department'][0];
-                    $userdata['gerente'] = isset($item['manager'][0]) ? $item['manager'][0] : true;
+                     $q = explode(',', $item['manager'][0]);
+                     $z = explode('=',$q[0]);
+                    $userdata['gerente'] = $z[0];
                 }
                  $auth->getStorage()->write($userdata);
                 return $this->redirect()->toRoute('home');
