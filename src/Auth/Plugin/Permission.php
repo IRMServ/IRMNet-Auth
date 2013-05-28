@@ -14,7 +14,13 @@ class Permission extends AbstractPlugin {
         
         $action = $e->getRouteMatch()->getParam('action');
         $auth = $sm->get('Auth');
-        
+         $convites = $sm->get('CHEAprov');
+        if ($convites != 0) {
+            
+            $userdata = $auth->getStorage()->read();
+            $userdata['convites-hora-extra'] = $convites;
+            $auth->getStorage()->write($userdata);
+        }
         if (!$auth->hasIdentity() && $route != 'login' ) {
             $router = $e->getRouter();
             $url = $router->assemble(array(), array('name' => 'login'));
