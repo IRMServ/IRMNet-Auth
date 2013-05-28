@@ -62,9 +62,13 @@ class IndexController extends AbstractActionController {
                      $userdata['departamento'] = $item['department'][0];
                      $q = explode(',', $item['manager'][0]);
                      $z = explode('=',$q[0]);
-                    $userdata['gerente'] = $z[0];
+                    $userdata['gerente'] = $z[1];
                 }
-                 $auth->getStorage()->write($userdata);
+                $auth->getStorage()->write($userdata);
+                
+                $userdata['convites-hora-extra'] = $this->getServiceLocator()->get('CHEAprov');
+                
+                $auth->getStorage()->write($userdata);
                 return $this->redirect()->toRoute('home');
             } else {
                 $view['messages'] = reset(explode(':', $messages[3]));
