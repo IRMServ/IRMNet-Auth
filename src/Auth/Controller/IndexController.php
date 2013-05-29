@@ -59,15 +59,20 @@ class IndexController extends AbstractActionController {
                 foreach ($result as $item) {
                     $userdata['displayname'] = $item['displayname'][0];
                     $userdata['email'] = $item['mail'][0];
-                     $userdata['departamento'] = $item['department'][0];
-                     $q = explode(',', $item['manager'][0]);
-                     $z = explode('=',$q[0]);
+                    $userdata['departamento'] = $item['department'][0];
+                    $q = explode(',', $item['manager'][0]);
+                    $z = explode('=', $q[0]);
+                    $result2 = $ldap->search("{$q[0]}", $config->server->baseDn, \Zend\Ldap\Ldap::SEARCH_SCOPE_SUB);
+                    foreach ($result2 as $item2) {
+
+                        $userdata['gerente-mail'] = $item2['mail'][0];
+                    }
                     $userdata['gerente'] = $z[1];
                 }
                 $auth->getStorage()->write($userdata);
-                
+
                 $userdata['convites-hora-extra'] = $this->getServiceLocator()->get('CHEAprov');
-                
+
                 $auth->getStorage()->write($userdata);
                 return $this->redirect()->toRoute('home');
             } else {
