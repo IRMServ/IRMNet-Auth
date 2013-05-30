@@ -23,14 +23,17 @@ class Permission extends AbstractPlugin {
         $aclconfig = $sm->get('Config');
         $aclrules = $aclconfig['acl'];
 
+        $userdata = $auth->getStorage()->read();
+       
+
         $acl = new Acl();
         $acl->deny();
         $acl->addRole(new Role('guest'));
         $acl->addResource(new Resource('Auth'));
-       
+
         $acl->allow('guest', 'Auth', 'Auth\Controller\Index:index');
         $acl->allow('guest', 'Auth', 'Auth\Controller\Index:logout');
-        
+
         foreach ($aclrules['Roles'] as $role => $painel) {
             $acl->addRole(new Role($role), 'guest');
         }
@@ -51,19 +54,19 @@ class Permission extends AbstractPlugin {
         $convites = $sm->get('CHEAprov');
         if ($convites != 0) {
 
-            $userdata = $auth->getStorage()->read();
+
             $userdata['convites-hora-extra'] = $convites;
             $auth->getStorage()->write($userdata);
         }
 
-        $user = $auth->getStorage()->read();
+
         $controller = $e->getTarget();
         $controllerClass = get_class($controller);
         $moduleName = strtoupper(substr($controllerClass, 0, strpos($controllerClass, '\\')));
         $routeMatch = $e->getRouteMatch();
         $controllerName = $routeMatch->getParam('controller');
 
-        $role = isset($user['departamento']) ? strtoupper($user['departamento']) : 'guest';
+        $role = isset($userdata['departamento']) ? strtoupper($userdata['departamento']) : 'guest';
 
         if (!$acl->isAllowed($role, $moduleNamespace, "{$controllerName}:{$action}")) {
 
@@ -74,21 +77,27 @@ class Permission extends AbstractPlugin {
             $router = $sm->get('router');
             $request = $sm->get('request');
 
-            $matchedRoute = $router->match($request);
-            if (null !== $matchedRoute) {
-                $sharedManager->attach('Zend\Mvc\Controller\AbstractActionController', 'dispatch', function($e) use ($sm) {
-                            $sm->get('ControllerPluginManager')->get('FlashMessenger')
-                                    ->addMessage("Acesso não autorizado");
-                        }, 2
-                );
-            }
-            
+
+
+            $sharedManager->attach('Zend\Mvc\Controller\AbstractActionController', 'dispatch', function($e) use ($sm) {
+                        $sm->get('ControllerPluginManager')->get('FlashMessenger')
+                                ->addMessage("Acesso não autorizado");
+                    }, 2
+            );
+
+
             $router = $e->getRouter();
             $url = $router->assemble(array(), array('name' => 'login'));
             $response = $e->getResponse();
             $response->setStatusCode(302);
             $response->getHeaders()->addHeaderLine('Location', $url);
         }
+         if (isset($userdata['displayname'])) {
+            $userdata['painel'] = $aclrules['Roles'][$userdata['departamento']];
+            $auth->getStorage()->write($userdata);
+        }
+
+        
     }
 
 }
