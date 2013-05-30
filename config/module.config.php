@@ -6,6 +6,57 @@ return array(
             'Auth\Controller\Index' => 'Auth\Controller\IndexController'
         ),
     ),
+    'acl' => array(
+        'Roles' => array(
+            'TI' =>'ti',
+            'ALMOXARIFADO'=>'almoxarifado',
+            'COMPRAS'=>'compras',
+            'DIRETORIA'=>'diretoria',
+            'FABRICAÇÃO'=>'fabricacao',
+            'FINANCEIRO - CONTÁBIL'=>'financeiro',
+            'FISCAL'=>'fiscal',
+            'LOGÍSTICA'=>'logistica',
+            'OCTG - ADMINISTRATIVO'=>'octg',
+            'OCTG - INSPEÇÃO'=>'octg',
+            'OCTG - MACHINE SHOP'=>'octg',
+            'OCTG - VÁLVULAS'=>'octg',
+            'OPERACIONAL - OFFSHORE'=>'operacional',
+            'PROJETOS ESPECIAIS'=>'projetos-especiais',
+            'QUALIDADE'=>'qualidade',
+            'RELATÓRIO'=>'relatorio',
+            'RH'=>'rh',
+            'RH - ADP'=>'dp',
+            'RH - GT'=>'rh',
+            'RH - T&D'=>'td',
+            'SMS'=>'sms',
+            'TRANSPORTE'=>'logistica',
+        ),
+        'Resources'=>array(
+            'DP',
+            'Helpdesk',           
+            'Base',
+            'TI',
+            'ProjetosEspeciais',
+            'RH',
+            'MailService',
+            'Relatorio',
+            'Qualidade',
+            'Planejamento',
+            'Operacional',
+            'OCTG',
+            'Logistica',
+            'Juridico',
+            'HSE',
+            'Fiscal',
+            'Financeiro',
+            'Fabricacao',
+            'Diretoria',
+            'Controladoria',
+            'Contabilidade',
+            'Compras',
+            'Almoxarifado',
+        )
+    ),
     'router' => array(
         'routes' => array(
             'login' => array(
@@ -51,7 +102,7 @@ return array(
                 $result = $ldap->search($f4, $config['server']['baseDn'], \Zend\Ldap\Ldap::SEARCH_SCOPE_SUB);
 
                 $users = array();
-                $noArray = array('Germano', 'Funcionário', 'teste', 'WKRADAR', 'Recepcao', 'Dswk');
+                $noArray = array('Germano', 'Funcionário', 'teste', 'WKRADAR', 'Recepcao', 'Dswk', 'Root');
                 foreach ($result as $item) {
                     if (!in_array($item['displayname'][0], $noArray)) {
                         $users[$item['displayname'][0]] = $item['displayname'][0];
@@ -102,9 +153,9 @@ return array(
         )
     ),
     'navigation' => array(
-        // The DefaultNavigationFactory we configured in (1) uses 'default' as the sitemap key
+// The DefaultNavigationFactory we configured in (1) uses 'default' as the sitemap key
         'default' => array(
-            // And finally, here is where we define our page hierarchy
+// And finally, here is where we define our page hierarchy
             'auth' => array(
                 'label' => 'Sair',
                 'route' => 'logout',

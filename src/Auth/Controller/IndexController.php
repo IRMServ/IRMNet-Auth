@@ -33,7 +33,9 @@ class IndexController extends AbstractActionController {
         $view['form'] = $form;
 
         $ldap = $this->getServiceLocator()->get('Ldap');
-
+        
+        $messages = $this->flashMessenger()->getMessages();
+        $view['messages'] = $messages;
         $config = new Config($ldapconfig['ldap-config'], true);
         $options = (array) $config->toArray();
 
@@ -57,9 +59,11 @@ class IndexController extends AbstractActionController {
                 $result = $ldap->search("(samaccountname={$login})", $config->server->baseDn, \Zend\Ldap\Ldap::SEARCH_SCOPE_SUB);
                 $userdata = array();
                 foreach ($result as $item) {
+
                     $userdata['displayname'] = $item['displayname'][0];
                     $userdata['email'] = $item['mail'][0];
                     $userdata['departamento'] = $item['department'][0];
+
                     $q = explode(',', $item['manager'][0]);
                     $z = explode('=', $q[0]);
                     $result2 = $ldap->search("{$q[0]}", $config->server->baseDn, \Zend\Ldap\Ldap::SEARCH_SCOPE_SUB);
@@ -74,8 +78,12 @@ class IndexController extends AbstractActionController {
                 $userdata['convites-hora-extra'] = $this->getServiceLocator()->get('CHEAprov');
 
                 $auth->getStorage()->write($userdata);
+
+
                 return $this->redirect()->toRoute('home');
             } else {
+
+
                 $view['messages'] = reset(explode(':', $messages[3]));
             }
         }
