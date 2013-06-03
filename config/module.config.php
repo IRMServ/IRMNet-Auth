@@ -25,7 +25,7 @@ return array(
             'QUALIDADE'=>'qualidade',
             'RELATÓRIO'=>'relatorio',
             'RH'=>'rh',
-            'RH - ADP'=>'dp',
+            'RH - ADP'=>'departamento-pessoals',
             'RH - GT'=>'rh',
             'RH - T&D'=>'td',
             'SMS'=>'sms',
