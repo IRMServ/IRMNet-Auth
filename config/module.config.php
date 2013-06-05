@@ -9,6 +9,7 @@ return array(
     'acl' => array(
         'Roles' => array(
             'TI' =>'ti',
+            'CONTROLADORIA'=>'controladoria',
             'ALMOXARIFADO'=>'almoxarifado',
             'COMPRAS'=>'compras',
             'DIRETORIA'=>'diretoria',
@@ -30,6 +31,8 @@ return array(
             'RH - T&D'=>'td',
             'SMS'=>'sms',
             'TRANSPORTE'=>'logistica',
+            'PLANEJAMENTO'=>'planejamento',
+            'JURIDICO'=>'juridico'
         ),
         'Resources'=>array(
             'DP',
