@@ -9,15 +9,13 @@
     height:100%;
 }
 #center{
-
     width:620px;
-    height:500px;
     margin:0 auto;
 }
 #logo{
     width:100%;
     text-align: center;
-    margin-top:60px;
+    margin-top:40px;
     margin-bottom: 5px;
 }
 #caixa{
@@ -32,7 +30,6 @@
     background: -ms-linear-gradient(top, #e0e0e0 0%,#bfbfbf 99%); /* IE10+ */
     background: linear-gradient(to bottom, #e0e0e0 0%,#bfbfbf 99%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#bfbfbf',GradientType=0 ); /* IE6-8 */
-    height:370px;
     box-shadow: 5px 5px 8px #999;
     border:2px solid #ccc;
     border-radius:10px;
@@ -56,10 +53,11 @@
     padding-bottom:20px;
 }
 #corpo{
-    width:100%;
+    width:90%;
     margin-top:20px;
     text-align: center;
-
+    padding-left:5%;
+    height:auto;
 }
 #login
 {
@@ -75,7 +73,6 @@
     padding:5px;
     border-radius:7px;
     margin-top:10px;
-
 }
 #enviar
 {
@@ -109,7 +106,6 @@
     margin:0 auto;
     margin-top:15px;
     text-align: left;
-    height:200px;
 }
 #irmnet{
     width:100%;
