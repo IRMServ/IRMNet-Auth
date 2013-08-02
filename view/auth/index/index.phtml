@@ -1,39 +1,52 @@
-<div class="page-header">
-    <h1>IRM Net</h1>
+<link rel="stylesheet" type="text/css" href="/css/auth.css"/>
+<div id="wrap">
 
-    <h2>Autenticação</h2>
-    <h4>Use seu usuário/senha da rede</h4>
-<img src="/img/irmaozinho-intranet.png" id="irmaozinho" />
-</div>
-<style>
-    #irmaozinho{
-        margin-left:300px;
-        margin-top:-200px;
-    }
-</style>
-<div class="page-footer">
-
-    <?php
-    if ($this->messages) {
-        ?>
-        <div class="alert alert-error">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Erro:</strong> 
-            <?php foreach($this->messages as $message):?>
-            <?php echo $message;?>
-            <?php endforeach;?>
+    <div id="center">
+        <div id="logo">
+            <img src="img/lgoo.jpg"/>
         </div>
-       
-        <?php
-    }
-    $form = $this->form;
-    $form->setAttribute('action', $this->url('login', array()));
-    $form->prepare();
+        <div id="caixa">
+            <div id="titulo">
+                <img src="img/autenticacao.png"/>
+            </div>
+            <div id="corpo">
 
-    echo $this->form()->openTag($form);
-    echo $this->formRow($form->get('login'));
-    echo $this->formRow($form->get('senha'));
-    echo $this->formSubmit($form->get('submit'));
-    echo $this->form()->closeTag();
-    ?>
+                <div id="irmnet">
+                    <img src="img/irmnet-lego.png"/>
+                </div>
+                <?php
+                if ($this->messages) {
+                    ?>
+                    <div class="alert alert-error">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Erro:</strong> 
+                        <?php foreach ($this->messages as $message): ?>
+                            <?php echo $message; ?>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <?php
+                }
+                ?>
+                <div id="logon">
+                    <form id="form" action="<?php echo $this->url('login', array());?>" method="post">
+                        <input placeholder="Usuário da rede" name="login" type="text" id="login" />
+                        <input placeholder="Senha da rede" type="password" name="senha" id="senha" />
+                        <a href="#" id="enviar"></a>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $(".alert").alert();
+        $('#enviar').click(function() {
+            $("#form").submit();
+        });
+    });
+</script>
