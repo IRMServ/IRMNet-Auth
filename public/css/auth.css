@@ -81,7 +81,7 @@
             {
                 width:107px;
                 height:32px;
-                background-image: url(img/botoes.png);
+                background-image: url(/img/botoes.png);
                 background-repeat: no-repeat;
                 margin-top:10px;
                 float:right;
@@ -90,7 +90,7 @@
             {
                 width:107px;
                 height:32px;
-                background-image: url(img/botoes.png);
+                background-image: url(/img/botoes.png);
                 background-position: 0 -35px;
                 margin-top:10px;
                 float:right;
@@ -99,7 +99,7 @@
             {
                 width:107px;
                 height:32px;
-                background-image: url(img/botoes.png);
+                background-image: url(/img/botoes.png);
                 background-position: 0 -69px;
                 margin-top:10px;
                 float:right;
