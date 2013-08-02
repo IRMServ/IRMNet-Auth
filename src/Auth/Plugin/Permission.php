@@ -53,8 +53,6 @@ class Permission extends AbstractPlugin {
 
         $convites = $sm->get('CHEAprov');
         if ($convites != 0) {
-
-
             $userdata['convites-hora-extra'] = $convites;
             $auth->getStorage()->write($userdata);
         }

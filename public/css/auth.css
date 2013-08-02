@@ -1,0 +1,117 @@
+     *{
+                border:0;
+                margin:0;
+                padding:0;
+            }
+            #wrap
+            {
+                width:100%;
+                height:100%;
+            }
+            #center{
+
+                width:620px;
+                height:500px;
+                margin:0 auto;
+            }
+            #logo{
+                width:100%;
+                text-align: center;
+                margin-top:60px;
+                margin-bottom: 5px;
+            }
+            #caixa{
+                width:100%;
+                background: #e0e0e0; /* Old browsers */
+                /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+                background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UwZTBlMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iI2JmYmZiZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+                background: -moz-linear-gradient(top, #e0e0e0 0%, #bfbfbf 99%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e0e0e0), color-stop(99%,#bfbfbf)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top, #e0e0e0 0%,#bfbfbf 99%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top, #e0e0e0 0%,#bfbfbf 99%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top, #e0e0e0 0%,#bfbfbf 99%); /* IE10+ */
+                background: linear-gradient(to bottom, #e0e0e0 0%,#bfbfbf 99%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#bfbfbf',GradientType=0 ); /* IE6-8 */
+                height:370px;
+                box-shadow: 5px 5px 8px #999;
+                border:2px solid #ccc;
+                border-radius:10px;
+            }
+            #titulo{
+                background: #7f3311; /* Old browsers */
+                /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+                background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdmMzMxMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iIzdkMWQxZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+                background: -moz-linear-gradient(top, #7f3311 0%, #7d1d1e 99%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7f3311), color-stop(99%,#7d1d1e)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top, #7f3311 0%,#7d1d1e 99%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top, #7f3311 0%,#7d1d1e 99%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top, #7f3311 0%,#7d1d1e 99%); /* IE10+ */
+                background: linear-gradient(to bottom, #7f3311 0%,#7d1d1e 99%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f3311', endColorstr='#7d1d1e',GradientType=0 ); /* IE6-8 */
+                width:100%;
+                height:20px;
+                border-radius:7px;
+                text-align: center;
+                padding-top:10px;
+                padding-bottom:20px;
+            }
+            #corpo{
+                width:100%;
+                margin-top:20px;
+                text-align: center;
+               
+            }
+            #login
+            {
+                width:340px;
+                height:20px;
+                padding:5px;
+                border-radius:7px;
+            }
+            #senha
+            {
+                width:210px;
+                height:20px;
+                padding:5px;
+                border-radius:7px;
+                margin-top:10px;
+
+            }
+            #enviar
+            {
+                width:107px;
+                height:32px;
+                background-image: url(img/botoes.png);
+                background-repeat: no-repeat;
+                margin-top:10px;
+                float:right;
+            }
+            #enviar:hover
+            {
+                width:107px;
+                height:32px;
+                background-image: url(img/botoes.png);
+                background-position: 0 -35px;
+                margin-top:10px;
+                float:right;
+            }
+            #enviar:active
+            {
+                width:107px;
+                height:32px;
+                background-image: url(img/botoes.png);
+                background-position: 0 -69px;
+                margin-top:10px;
+                float:right;
+            }
+            #logon{
+                width:350px;
+                margin:0 auto;
+                margin-top:15px;
+                text-align: left;
+                height:200px;
+            }
+            #irmnet{
+                width:100%;
+                margin:0 auto;
+            }
