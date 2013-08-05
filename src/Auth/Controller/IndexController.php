@@ -64,7 +64,9 @@ class IndexController extends AbstractActionController {
                     $userdata['email'] = $item['mail'][0];
                     $userdata['departamento'] = $item['department'][0];
 
-                    $q = explode(',', $item['manager'][0]);
+                    if(isset($item['manager']))
+                    {
+                        $q = explode(',', $item['manager'][0]);
                     $z = explode('=', $q[0]);
                     $result2 = $ldap->search("{$q[0]}", $config->server->baseDn, \Zend\Ldap\Ldap::SEARCH_SCOPE_SUB);
                     foreach ($result2 as $item2) {
@@ -72,6 +74,7 @@ class IndexController extends AbstractActionController {
                         $userdata['gerente-mail'] = $item2['mail'][0];
                     }
                     $userdata['gerente'] = $z[1];
+                    }
                 }
                 $auth->getStorage()->write($userdata);
 
