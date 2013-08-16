@@ -45,6 +45,12 @@
 <script>
     $(document).ready(function() {
         $(".alert").alert();
+        $("#senha").keypress(function(e) {
+            if (e.keyCode == 13)
+            {
+                $("#form").submit();
+            }
+        });
         $('#enviar').click(function() {
             $("#form").submit();
         });
