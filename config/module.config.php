@@ -38,7 +38,7 @@ return array(
             'DP',
             'Helpdesk',           
             'Base',
-            'TI',
+            //'TI',
             'ProjetosEspeciais',
             'RH',
             'MailService',

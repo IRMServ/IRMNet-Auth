@@ -30,9 +30,11 @@ class Permission extends AbstractPlugin {
         $acl->deny();
         $acl->addRole(new Role('guest'));
         $acl->addResource(new Resource('Auth'));
+        $acl->addResource(new Resource('TI'));
 
         $acl->allow('guest', 'Auth', 'Auth\Controller\Index:index');
         $acl->allow('guest', 'Auth', 'Auth\Controller\Index:logout');
+        $acl->allow('guest', 'TI', 'TI\Controller\Impressao:importar');
 
         foreach ($aclrules['Roles'] as $role => $painel) {
             $acl->addRole(new Role($role), 'guest');
